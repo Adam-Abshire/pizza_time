@@ -1,0 +1,63 @@
+<div class="column">
+    <input type="checkbox" id="" name="name" value="Pepperoni">
+    <label for="">Pepperoni</label>
+    <input type="checkbox" id="" name="name" value="Sausage">
+    <label for="">Sausage</label>
+    <input type="checkbox" id="" name="name" value="Salami">
+    <label for="">Salami</label>
+    <input type="checkbox" id="" name="name" value="Bacon">
+    <label for="">Bacon</label>
+    <input type="checkbox" id="" name="name" value="Ham">
+    <label for="">Ham</label>
+</div>
+<div class="column">
+    <input type="checkbox" id="" name="name" value="Olive">
+    <label for="">Olive</label>
+    <input type="checkbox" id="" name="name" value="Jalapeno">
+    <label for="">Jalapeno</label>
+    <input type="checkbox" id="" name="name" value="Banana Pepper">
+    <label for="">Banana Pepper</label>
+    <input type="checkbox" id="" name="name" value="Sweet Pepper">
+    <label for="">Sweet Pepper</label>
+    <input type="checkbox" id="" name="name" value="Onion">
+    <label for="">Onion</label>
+</div>
+<div class="column">
+    <input type="checkbox" id="" name="name" value="Chicken">
+    <label for="">Chicken</label>
+    <input type="checkbox" id="" name="name" value="Ground Beef">
+    <label for="">Ground Beef</label>
+    <input type="checkbox" id="" name="name" value="Anchovy">
+    <label for="">Anchovy</label>
+    <input type="checkbox" id="" name="name" value="Spinach">
+    <label for="">Spinach</label>
+    <input type="checkbox" id="" name="name" value="Tomato">
+    <label for="">Tomato</label>
+</div>
+
+
+def create_pizza(request):
+    if request.method == 'POST':
+        curr_user = User.objects.get(id = request.session['user_id'])
+        
+        all_toppings = []
+        chose_toppings = []
+        for topping in Topping.objects.all():
+            Topping.objects.filter(id = request.POST['topping'])
+            all_toppings.append(topping.id)
+        for topping in all_toppings:
+            chose_toppings.append(Topping.objects.get(id=topping).name)
+
+        
+        Pizza.objects.create(
+            method = request.POST['method'],
+            size = request.POST['size'],
+            crust = request.POST['crust'],
+            ordered_by = curr_user,
+        )
+        for topping in chose_toppings:
+            Pizza.objects.create(
+                toppings = Topping.objects.filter(name=topping).name,
+            )
+        pizza_id = Pizza.objects.last().id
+    return redirect(f'/cart/{pizza_id}')

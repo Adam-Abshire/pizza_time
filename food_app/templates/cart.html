@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Cart</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cart.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <h1>Pizza Planet</h1>
+            <div id="navbar">
+                <a href="/menu">Home</a>
+                <a href="/user/{{user.id}}">Account</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div id="checkout">
+            <div class="line">
+                <h2>Your Order</h2>
+            </div>
+            <div class="line">
+                <p>METHOD: {{pizza.method }}</p>
+            </div>
+            <div class="line">
+                <p>SIZE: {{ pizza.size }}</p>
+            </div>
+            <div class="line">
+                <p>CRUST: {{ pizza.crust }}</p>
+            </div>
+            <div class="line">
+                <p>TOPPINGS:</p>
+                {% for toppings in pizza.toppings.all %}
+                <p>&nbsp;{{ toppings.name }}&nbsp;</p>
+                {% endfor %}
+            </div>
+            <div class="line">
+                <p>PRICE: {{ pizza.price }}</p>
+            </div>
+            <div class="line" style="width: 30%;">
+                <a href="/menu" style="background-color: red;">Start Over</a>
+                <a href="/success/{{ pizza.id }}" style="background-color: green;">Purchase</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

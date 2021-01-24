@@ -1,0 +1,75 @@
+* { 
+    padding: 0;
+    margin: 0;
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 6em auto 0px auto;
+    height: 80%;
+    background-image: linear-gradient(to bottom right, red, yellow);
+    padding: 2em;
+    border: 4px solid black;
+    border-radius: 20px;
+}
+#main{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#header{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+}
+#reg, #log {
+    display: flex;
+    width: 42%;
+    padding: .5em;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-image: linear-gradient(to bottom left, #2b8bb3, #777dcb);
+    justify-content: center;
+}
+#error_messages{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 4em;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .2em;
+}
+h1, button {
+    text-align: center;
+    margin-bottom: .25em;
+}
+input {
+    margin-left: 1em;
+}
+button {
+    margin-top: 2em;
+    box-shadow: 1px 1px 1px black;
+}
+li {
+    list-style: none;
+    color: darkblue;
+    font-weight: bold;
+}
+img {
+    width: 415px;
+    border: 2px black solid;
+}
+a{
+    color: white;
+}

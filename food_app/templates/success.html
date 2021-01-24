@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'success.css' %}">
+</head>
+<body>
+    <div id="container">
+        <img src="{% static 'Pizza.png' %}" alt="">
+        <h2>Your Order Details:</h2>
+        <div id="details">
+            <p>METHOD: {{pizza.method }}</p>
+            <p>SIZE: {{ pizza.size }}</p>
+            <p>CRUST: {{ pizza.crust }}</p>
+            <p>TOPPING: {{ pizza.toppings.name }}</p>
+            <p>PRICE: ${{ pizza.price }}</p>
+        </div>
+        <a href="/menu">Back to the Menu</a>
+    </div>
+</body>
+</html>

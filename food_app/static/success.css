@@ -1,0 +1,46 @@
+* { 
+    padding: 0;
+    margin: 0;
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 6em auto 0px auto;
+    height: 80%;
+    background-image: linear-gradient(to bottom right, red, yellow);
+    padding: 2em;
+    border: 4px solid black;
+    border-radius: 20px;
+}
+#details {
+    width: 50%;
+    padding: 1em 4em 2em 4em;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid darkblue;
+    border-radius: 15px;
+    background-image: linear-gradient(to bottom left, #2b8bb3, #777dcb);;
+}
+img {
+    width: 415px;
+}
+p {
+    margin: 1em 0 0 0;
+    font-weight: bold;
+}
+h2 {
+    margin: 1em 0 1em 0;
+}
+a {
+    padding: 8px 24px 8px 24px;
+    background-color: darkblue;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px black;
+    border: 1px black;
+    margin-top: 10px;
+}

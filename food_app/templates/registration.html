@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <a href="/login">Already Have an Account? Login</a>
+        </div>
+        <div id="main">
+            <div id="image">
+                <img src="{% static 'Pizza.png' %}" alt="">
+            </div>
+            <div id="reg">
+                <form action="/register_user" method="POST">
+                    <h1>Registration</h1>
+                    {% csrf_token %}
+                    <div class="line">
+                        <label for="">First Name</label>
+                        <input type="text" name="first_name">
+                    </div>
+                    <div class="line">
+                        <label for="">Last Name</label>
+                        <input type="text" name="last_name">
+                    </div>
+                    <div class="line">
+                        <label for="">Email Address</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="line">
+                        <label for="">Address</label>
+                        <input type="text" name="address">
+                    </div>
+                    <div class="line">
+                        <label for="">City</label>
+                        <input type="text" name="city">
+                    </div>
+                    <div class="line">
+                        <label for="">State</label>
+                        <input type="text" name="state">
+                    </div>
+                    <div class="line">
+                        <label for="">Password</label>
+                        <input type="password" name="pword">
+                    </div>
+                    <div class="line">
+                        <label for="">Confirm Password</label>
+                        <input type="password" name="pword_confirm">
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+        <div id="error_messages">
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'menu2.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div id="image">
+            <img src="{% static 'Pizza.png' %}" alt="">
+        </div>
+        <div id="nav">
+            <a href="/menu">Home</a>
+            <a href="/user/{{user.id}}">Account</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div id="menu">
+            <h1>Craft-A-Pizza</h1>
+            <form action="/create_pizza" method="POST">
+                {% csrf_token %}
+                <div class="line">
+                    <label for="">Method:</label>
+                    <select name="method" id="method">
+                        <option value="Delivery">Delivery</option>
+                        <option value="Carry Out">Carry Out</option>
+                        <option value="Dine In">Dine In</option>
+                    </select>
+                </div>
+                <div class="line">
+                    <label for="">Size</label>
+                    <select name="size" id="size">
+                        <option value="Large">Large</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Small">Small</option>
+                    </select>
+                </div>
+                <div class="line">
+                    <label for="">Crust</label>
+                    <select name="crust" id="crust">
+                        <option name="Thin" value="Thin">Thin</option>
+                        <option name="Thick" value="Thick">Thick</option>
+                        <option name="Chicago" value="Chicago Style Deep Dish">Chicago Style Deep Dish</option>
+                    </select>
+                </div>
+                <h3>Choose A Topping:</h3>
+                <div class="column">
+                    {% for topping in toppings %}
+                    <input type="checkbox" name="topping" value="{{ topping.id }}">
+                    <label for="topping">{{ topping.name }}</label>
+                    {% endfor %}
+                </div>
+                <button type="submit">Add To Order</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
