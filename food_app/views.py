@@ -118,12 +118,31 @@ def edit_user(request, user_id):
 def create_pizza(request):
     if request.method == 'POST':
         curr_user = User.objects.get(id = request.session['user_id'])
+        curr_price = 0
+        topping_amount = 0
+        topping_list = request.POST.getlist('topping')
+        for topping in topping_list:
+            topping_amount += 1
+        curr_price += topping_amount * .75
         this_pizza = Pizza.objects.create(
             method = request.POST['method'],
             size = request.POST['size'],
             crust = request.POST['crust'],
             ordered_by = curr_user,
         )
+        this_pizza.save()
+        if this_pizza.method == "Delivery":
+            curr_price += 2.99
+        if this_pizza.crust == "Chicago Style Deep Dish":
+            curr_price += 1.99
+        if this_pizza.size == "Small":
+            curr_price += 12.99
+        elif this_pizza.size == "Medium":
+            curr_price += 14.99
+        else:
+            curr_price += 16.99
+        curr_price = str(round(curr_price, 2))
+        this_pizza.price = curr_price
         this_pizza.save()
         curr_toppings = request.POST.getlist('topping')
         for each_topping_id in curr_toppings:

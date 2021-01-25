@@ -45,7 +45,7 @@ img {
 }
 #nav {
     margin: 2em 0 2em 0;
-    background-color: purple;
+    background-color: firebrick;
 }
 input {
     margin-left: .25em;
@@ -67,7 +67,7 @@ label {
     
 }
 select {
-    width: 200px;
+    width: 220px;
 }
 h3 {
     margin-top: 20px;
