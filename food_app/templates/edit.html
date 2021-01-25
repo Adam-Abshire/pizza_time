@@ -24,43 +24,45 @@
             <div id="main_section">
                 <div id="edit_user">
                     <h3>{{ user.first_name }}'s Contact Info:</h3>
+                    <form action="/edit/{{user.id}}" method="POST">
                         {% csrf_token %}
-                    <div class="line">
-                        <label for="">First Name:</label>
-                        <h4>{{ user.first_name }}</h4>
-                    </div>
-                    <div class="line">
-                        <label for="">Last Name:</label>
-                        <h4>{{ user.last_name }}</h4>
-                    </div>
-                    <div class="line">
-                        <label for="">Email Address:</label>
-                        <h4>{{ user.email }}</h4>
-                    </div>
-                    <div class="line">
-                        <label for="">Address:</label>
-                        <h4>{{ user.address }}</h4>
-                    </div>
-                    <div class="line">
-                        <label for="">City:</label>
-                        <h4>{{ user.city }}</h4>
-                    </div>
-                    <div class="line">
-                        <label for="">State:</label>
-                        <h4>{{ user.state }}</h4>
-                    </div>
-                    <div class="line">
-                        <button href="/edit/{{ user.id }}">Edit</button>
-                    </div>
-                    <div id="error_messages">
-                        {% if messages %}
-                        <ul>
-                            {% for message in messages %}
-                                <li style="color: red;">{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                    </div>
+                        <div class="line">
+                            <label for="">First Name</label>
+                            <input type="text" name="first_name" value="{{user.first_name}}">
+                        </div>
+                        <div class="line">
+                            <label for="">Last Name</label>
+                            <input type="text" name="last_name" value="{{user.last_name}}">
+                        </div>
+                        <div class="line">
+                            <label for="">Email Address</label>
+                            <input type="text" name="email" value="{{user.email}}">
+                        </div>
+                        <div class="line">
+                            <label for="">Address</label>
+                            <input type="text" name="address" value="{{user.address}}">
+                        </div>
+                        <div class="line">
+                            <label for="">City</label>
+                            <input type="text" name="city" value="{{user.city}}">
+                        </div>
+                        <div class="line">
+                            <label for="">State</label>
+                            <input type="text" name="state" value="{{user.state}}">
+                        </div>
+                        <div class="line">
+                            <button type="submit">Update Information</button>
+                        </div>
+                        <div id="error_messages">
+                            {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li style="color: red;">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </form>
                 </div>
                 <div id="past_orders">
                     <h3>{{ user.first_name }}'s Last 3 Orders:</h3>

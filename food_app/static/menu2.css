@@ -87,3 +87,7 @@ a {
     padding: .25em .5em .25em .5em;
     background-color: darkgrey;
 }
+button:hover {
+    background-color: white;
+    box-shadow: 0 10px 10px 0 black, 0 17px 50px 0 black;
+}

@@ -39,9 +39,8 @@
     align-items: center;
 }
 .line {
-    width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-bottom: .2em;
 }
 form {
@@ -98,12 +97,4 @@ h5 {
 }
 .pizza > a {
     text-align: right;
-}
-label {
-    width: 35%;
-    margin-left: 1em;
-}
-button {
-    width: 40%;
-    margin-left: 28%;
 }
