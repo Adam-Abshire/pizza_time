@@ -55,8 +55,9 @@ img {
 }
 button {
     margin-top: 2em;
+    margin-left: 28%;
     box-shadow: 1px 1px 1px black;
-    width: 100%;
+    width: 40%;
 }
 .column{
     display: flex;
@@ -102,8 +103,4 @@ h5 {
 label {
     width: 35%;
     margin-left: 1em;
-}
-button {
-    width: 40%;
-    margin-left: 28%;
 }

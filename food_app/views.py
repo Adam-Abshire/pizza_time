@@ -56,6 +56,21 @@ def specific_user(request, member_id):
         'pizza' : all_3,
     }
     return render(request, 'user.html', context)
+
+def make_edits(request, member_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    the_user = User.objects.get(id=member_id)
+    last_pizza_id = Pizza.objects.filter(ordered_by = User.objects.get(id = member_id)).last().id
+    pizza1 = Pizza.objects.get(id = last_pizza_id)
+    pizza2 = Pizza.objects.get(id = last_pizza_id-1)
+    pizza3 = Pizza.objects.get(id = last_pizza_id-2)
+    all_3 = [pizza1, pizza2, pizza3]
+    context = {
+        'user' : the_user,
+        'pizza' : all_3,
+    }
+    return render(request, 'edit.html', context)
 ######## RENDERED WEB PAGES ###############
 ######## LOGIN & REGISTRATION #############
 def register(request):
@@ -96,14 +111,14 @@ def logout(request):
     return redirect('/')
 ######## LOGIN & REGISTRATION #############
 ######## EDIT USER INFORMATION ############
-def edit_user(request, user_id):
+def edit_user(request, member_id):
     if request.method == 'POST':
         errors = User.objects.editval(request.POST)
         if len(errors) > 0:
             for value in errors.values():
                 messages.error(request, value)
-            return redirect(f'/user/{user_id}')
-        curr_user = User.objects.get(id=user_id)
+            return redirect(f'/user/{member_id}')
+        curr_user = User.objects.get(id=member_id)
         curr_user.first_name = request.POST['first_name']
         curr_user.last_name = request.POST['last_name']
         curr_user.email = request.POST['email']
@@ -111,8 +126,8 @@ def edit_user(request, user_id):
         curr_user.city = request.POST['city']
         curr_user.state = request.POST['state']
         curr_user.save()
-        return redirect(f'/user/{user_id}')
-    return redirect(f'/user/{user_id}')
+        return redirect(f'/user/{member_id}')
+    return redirect(f'/user/{member_id}')
 ######## EDIT USER INFORMATION ############
 ######## CREATE NEW PIZZA & REORDER PIZZA##
 def create_pizza(request):

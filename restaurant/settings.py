@@ -1,3 +1,4 @@
+from .secret import secret
 """
 Django settings for restaurant project.
 
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ge=4_c_%mbcp#z!z5k)+7!-kmudi7^wzm=k2qqx)%fdvtb5k#i'
+SECRET_KEY = secret
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

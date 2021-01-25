@@ -50,7 +50,7 @@
                         <h4>{{ user.state }}</h4>
                     </div>
                     <div class="line">
-                        <button href="/edit/{{ user.id }}">Edit</button>
+                        <button onclick="window.location.href = '/make_edits/{{ user.id }}';"'>Edit</button>
                     </div>
                     <div id="error_messages">
                         {% if messages %}
