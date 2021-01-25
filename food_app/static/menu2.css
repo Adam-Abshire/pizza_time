@@ -26,6 +26,9 @@ img {
     width: 415px;
     border: 2px black solid;
 }
+body {
+    background-color: transparent;
+}
 .line{
     width: 400px;
     display: flex;
@@ -45,7 +48,6 @@ img {
 }
 #nav {
     margin: 2em 0 2em 0;
-    background-color: firebrick;
 }
 input {
     margin-left: .25em;

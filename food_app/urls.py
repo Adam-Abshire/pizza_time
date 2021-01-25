@@ -15,4 +15,5 @@ urlpatterns = [
     path('create_pizza', views.create_pizza),
     path('favorite/<int:pizza_id>', views.favorite),
     path('unfavorite/<int:pizza_id>', views.unfavorite),
+    path('reorder/<int:pizza_id>', views.reorder),
 ]

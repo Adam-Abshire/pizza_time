@@ -114,7 +114,7 @@ def edit_user(request, user_id):
         return redirect(f'/user/{user_id}')
     return redirect(f'/user/{user_id}')
 ######## EDIT USER INFORMATION ############
-######## CREATE NEW PIZZA #################
+######## CREATE NEW PIZZA & REORDER PIZZA##
 def create_pizza(request):
     if request.method == 'POST':
         curr_user = User.objects.get(id = request.session['user_id'])
@@ -151,6 +151,24 @@ def create_pizza(request):
             this_pizza.save()
         pizza_id = this_pizza.id
     return redirect(f'/cart/{pizza_id}')
+
+def reorder(request, pizza_id):
+    this_pizza = Pizza.objects.get(id=pizza_id)
+    curr_user = User.objects.get(id = request.session['user_id'])
+    curr_pizza = Pizza.objects.create(
+        method = this_pizza.method,
+        size = this_pizza.size,
+        crust = this_pizza.crust,
+        ordered_by = curr_user,
+        price = this_pizza.price,
+    )
+    for each_topping in this_pizza.toppings.all():
+        this_topping = Topping.objects.get(id = each_topping.id)
+        curr_pizza.toppings.add(this_topping)
+    curr_pizza.save()
+    pizza_id = curr_pizza.id
+    return redirect(f'/cart/{pizza_id}')
+######## CREATE NEW PIZZA & REORDER PIZZA############
 ################LIKE & UNLIKE########################
 def favorite(request, pizza_id):
     curr_pizza = Pizza.objects.get(id=pizza_id)
