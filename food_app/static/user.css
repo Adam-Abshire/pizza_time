@@ -35,7 +35,7 @@
     border: 2px solid black;
     border-radius: 15px;
     background-image: linear-gradient(to bottom left, #2b8bb3, #777dcb);
-    justify-content: felx-start;
+    justify-content: flex-start;
     align-items: center;
 }
 .line {
@@ -49,6 +49,7 @@ form {
 }
 img {
     width: 415px;
+    margin-bottom: 1em;
     border: 2px black solid;
 }
 button {
@@ -83,11 +84,17 @@ p {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-#navbar > a {
+#nav > a {
     border: 1px solid black;
     box-shadow: 1px 1px 1px black;
     color: white;
     text-decoration: none;
     padding: .25em .5em .25em .5em;
     background-color: darkgrey;
+}
+h5 {
+    font-weight: normal;
+}
+.pizza > a {
+    text-align: right;
 }

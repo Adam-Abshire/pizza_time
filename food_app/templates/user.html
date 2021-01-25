@@ -68,7 +68,7 @@
                     <h3>{{ user.first_name }}'s Last 3 Orders:</h3>
                     <div class="pizza">
                         {% for pizzas in pizza %}
-                            <p>Last Ordered: {{ pizzas.created_at }} <a href="/favorite/{{ pizzas.id }}">Favorite</a></p>
+                            <p>Last Ordered: {{ pizzas.created_at|date:"M d, Y"}} <a href="/favorite/{{ pizzas.id }}">Favorite</a></p>
                             <p>{{ pizzas.size }} - {{ pizzas.crust }} Crust</p>
                             <div class="topping">
                                 {% for topping in pizzas.toppings.all %}
@@ -84,14 +84,14 @@
                     <h3>{{ user.first_name }}'s Favorites:</h3>
                     {% for pizzas in user.liked_pizzas.all %}
                     <div class="pizza">
-                        <p>{{ pizzas.size }} - {{ pizzas.crust }} | <a href="/unfavorite/{{ pizzas.id }}">Unfavorite</a></p>
+                        <p>Last Ordered: {{ pizzas.created_at|date:"M d, Y"}} <a href="/unfavorite/{{ pizzas.id }}">Unfavorite</a></p>
+                        <p>{{ pizzas.size }} - {{ pizzas.crust }} Crust</p>
                         <div class="topping">
                             {% for topping in pizzas.toppings.all %}
                             <h5>{{ topping.name }} &nbsp;</h5>
                             {% endfor %}
                         </div>
                         <hr>
-                        <br>
                     </div>
                     {% endfor %}
                 </div>

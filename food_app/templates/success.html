@@ -15,7 +15,12 @@
             <p>METHOD: {{pizza.method }}</p>
             <p>SIZE: {{ pizza.size }}</p>
             <p>CRUST: {{ pizza.crust }}</p>
-            <p>TOPPING: {{ pizza.toppings.name }}</p>
+            <div class="line">
+                <p>TOPPINGS:</p>
+                {% for toppings in pizza.toppings.all %}
+                <p>&nbsp;{{ toppings.name }}&nbsp;</p>
+                {% endfor %}
+            </div>
             <p>PRICE: ${{ pizza.price }}</p>
         </div>
         <a href="/menu">Back to the Menu</a>

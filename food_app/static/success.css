@@ -44,3 +44,6 @@ a {
     border: 1px black;
     margin-top: 10px;
 }
+.line {
+    display: flex;
+}
